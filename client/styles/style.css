@@ -31,7 +31,7 @@ h1 {
   float: left;
 }
 
-.navigation li a {
+.navigation li a, .logout {
   width: 100px;
   height: 20px;
   line-height: 20px;
@@ -40,12 +40,16 @@ h1 {
   text-align: center;
 }
 
-.navigation li a:hover {
+.navigation li a:hover, .logout:hover {
   background-color: #ddd;
 }
 
 .navigation li a.selected {
   background-color: #ccc;
+}
+
+.navigation .logout {
+  float: right;
 }
 
 #container {
