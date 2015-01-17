@@ -1,10 +1,12 @@
 angular.module('shortly.shorten', [])
 
-.controller('ShortenController', function ($scope, $location, Links) {
+.controller('ShortenController', function ($scope, $location, Links, Auth) {
   // Your code here
   $scope.link = {};
   $scope.url;
-  $scope.addLink = function(){
+  $scope.invalid;
+  $scope.addLink = function(isValid){
+    if(isValid) {
     Links.shortenLink($scope.url)
       .then(function (createdLink) {
         $scope.link = createdLink;
@@ -12,5 +14,11 @@ angular.module('shortly.shorten', [])
       .catch(function (error) {
         console.error(error);
       });
+    } else {
+      console.log('hi');
+      $scope.invalid = "Invalid!";
+      // console.alert("aaah");
+    }
   };
+  $scope.logout = Auth.signout;
 });

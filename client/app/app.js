@@ -11,21 +11,36 @@ angular.module('shortly', [
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController'
     })
+    .when('/logout', {redirectTo: '/signin'})
     .when('/signup', {
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
     .when('/links', {
-      templateUrl: 'app/app.html',
-      controller: 'LinksController'
+      templateUrl: 'app/links/links.html',
+      controller: 'LinksController',
+      authenticate: true
+      // resolve: {
+      //   loggedin: function($q, Auth) {
+      //     var deferred = $q.defer();
+      //     if(Auth.isAuth()) {
+      //       deferred.resolve();
+      //     } else {
+      //       deferred.reject();
+      //     }
+      //     return deferred.promise;
+      //   }
+      // }
     })
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController'
+      controller: 'ShortenController',
+      authenticate: true
     })
     .otherwise({
       templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      authenticate: true
     });
     // Your code here
 
