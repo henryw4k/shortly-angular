@@ -14,10 +14,10 @@ angular.module('shortly.shorten', [])
       .catch(function (error) {
         console.error(error);
       });
+      $scope.invalid = "";
     } else {
       console.log('hi');
       $scope.invalid = "Invalid!";
-      // console.alert("aaah");
     }
   };
   $scope.logout = Auth.signout;
